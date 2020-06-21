@@ -7,5 +7,6 @@ export default {
     possibleSites: [],
     selectedSites: [],
 
-    searchResults: [],
+    searchResults: []
+,
 }

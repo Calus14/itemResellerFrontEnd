@@ -7,8 +7,7 @@
       </div>
       <div id="div2">
         <input id="searchItemInput" maxlength="2048" type="text" class="form-control" placeholder="" aria-label="searchItem"
-               v-model="currentSearch"
-                @keyup="enterSearch">
+               v-model="currentSearch">
       </div>
       <div id="div3">
         <b-button @click="submitBasicSearch" type="submit" variant="primary">Search</b-button>
@@ -17,10 +16,14 @@
 
 
     <div id="search_results_table"
-         v-if="this.getSearchResults.length == 0" >
+         v-if="this.getSearchResults.length != 0" >
 
       <div>
-        <b-table striped hover :items="this.getSearchResults"></b-table>
+        <b-table striped hover :fields="this.fields" :items="this.searchResultItems">
+          <template v-slot:cell(Item)="item">
+            <span v-html="item.value"></span>
+          </template>
+        </b-table>
       </div>
 
     </div>
@@ -39,13 +42,36 @@ export default {
   data() {
     return {
       currentSearch: "",
-      searchResults: []
+      fields: [
+        {
+          key: "Item",
+          sortable: true
+        },
+        {
+          key: "Price",
+          sortable: true
+        }
+      ]
     }
   },
   computed: {
     ...mapGetters([
       "getSearchResults"
     ]),
+
+    searchResultItems(){
+      var items = []
+      this.getSearchResults.forEach( item => {
+        items.push( {
+          "Item" : "<a href=\""+item["Link"]+"\">"+item["Name"]+"</a>",
+          "Price" : item["Price"]
+        } )
+      })
+
+      return items
+    }
+
+
   },
 
   methods: {
@@ -53,14 +79,9 @@ export default {
       "sendBasicSearch"
     ]),
 
-    enterSearch(){
-      console.log("Testing "+this.currentSearch)
-    },
-
     submitBasicSearch(){
       console.log("Submitting search for "+this.currentSearch)
       this.sendBasicSearch(this.currentSearch)
-
     }
   },
 
@@ -89,6 +110,12 @@ h3 {
   width : 50%;
   padding: 50px;
   display: flex;
+  margin: 0 auto;
+}
+
+#search_results_table{
+  width: 70%;
+  padding: 50px;
   margin: 0 auto;
 }
 
