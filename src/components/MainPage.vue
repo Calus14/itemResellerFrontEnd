@@ -23,6 +23,9 @@
           <template v-slot:cell(Item)="item">
             <span v-html="item.value"></span>
           </template>
+          <template v-slot:cell(Image)="image">
+            <span v-html="image.value"></span>
+          </template>
         </b-table>
       </div>
 
@@ -44,13 +47,22 @@ export default {
       currentSearch: "",
       fields: [
         {
+          key: "Website",
+          sortable: false
+        },
+        {
+          key: "Image",
+          sortable: false
+        },
+        {
           key: "Item",
           sortable: true
         },
         {
           key: "Price",
           sortable: true
-        }
+        },
+
       ]
     }
   },
@@ -63,8 +75,10 @@ export default {
       var items = []
       this.getSearchResults.forEach( item => {
         items.push( {
+          "Website": item["Website"],
+          "Image" : item["Image"],
           "Item" : "<a href=\""+item["Link"]+"\">"+item["Name"]+"</a>",
-          "Price" : item["Price"]
+          "Price" : item["Price"],
         } )
       })
 

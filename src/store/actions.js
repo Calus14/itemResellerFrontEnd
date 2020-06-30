@@ -4,9 +4,16 @@ export default{
 
   sendBasicSearch: (state, searchItem) =>{
     state.commit("setCurrentSearch", (searchItem))
-    var basicSearchUrl = new URL(serverInfo.serverUrl+":"+serverInfo.serverPort+"/"+serverInfo.basicSearchEndpoint+"/"+searchItem)
+    var basicSearchUrl = new URL(serverInfo.serverUrl+":"+serverInfo.serverPort+"/"+serverInfo.basicSearchEndpoint+"/")
     var httpBody = {
-      method: 'GET',
+      method: 'POST',
+      headers: new Headers({
+        'content-type': 'application/json'
+      }),
+      body: JSON.stringify({
+        'searchItem': searchItem,
+        'websitesToSearch': ['Ebay', 'Amazon']
+      })
     }
 
     // Now send down the request with fetch, take the future and set the possible states when it is done
