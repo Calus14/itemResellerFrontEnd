@@ -3,5 +3,6 @@ export default{
   serverPort: 8801,
 
   //ENDPOINTS
-  basicSearchEndpoint: "listOfItems"
+  basicSearchEndpoint: "listOfItems",
+  submitSubscriptionEndpoint: "submitSubscription"
 }

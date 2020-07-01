@@ -6,9 +6,6 @@ export default{
     return state.currentSearch
   },
 
-  getUserEmail: (state) => {
-    return state.userEmail
-  },
 
   getPossibleSites: (state) => {
     return state.possibleSites

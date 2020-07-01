@@ -1,8 +1,7 @@
 
 export default {
 
-    currentSearch: null,
-    userEmail: null,
+    currentSearch: "",
 
     possibleSites: [],
     selectedSites: [],
