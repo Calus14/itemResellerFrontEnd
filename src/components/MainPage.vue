@@ -2,7 +2,7 @@
   <div class="mainPage">
     <h3>Enter Search </h3>
     <SearchSettings/>
-    <h3>Subscribe To Be Updated When New Item Meets Search</h3>
+    <h3>Subscribe For Updates</h3>
     <SubscriptionSettings/>
     <ItemList id="search_results_table"/>
   </div>

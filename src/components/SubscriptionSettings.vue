@@ -1,29 +1,43 @@
 <template>
-    <div class="subscription_settings">
-        <div id="sub_options">
-            <div id="email_div">
-                <div id="email_label">
-                    <h6 style="font-weight:bold">Email Address</h6>
-                </div>
-                <div id="email_input">
-                    <input maxlength="2048" type="text" class="form-control" placeholder="your@gmail.com" aria-label="searchItem"
-                           v-model="userEmail">
-                </div>
-            </div>
-            <div id="price_point_div">
-                <div id="type_selector">
-                    <b-form-select v-model="pricePointType" :options="pricePointTypes"></b-form-select>
-                </div>
-                <div id="price_value_input">
-                    <input maxlength="2048" type="number" class="form-control" placeholder="100" aria-label="searchItem"
-                           v-model="pricePointValue">
-                </div>
-            </div>
-        </div>
-        <div id="submit_subscription_div">
-            <b-button :disabled="isValidToSend" @click="submitSubscription" type="submit" variant="primary">Submit Subscription</b-button>
-        </div>
-    </div>
+    <b-container class="bv-example-row" >
+        <b-row class="text-center">
+            <b-col cols="10">
+                <b-row class="text-center">
+                    <b-col cols="3">
+                        <h6 style="font-weight:bold">Email Address</h6>
+                    </b-col>
+                    <b-col cols="9">
+                        <input maxlength="2048" type="text" class="form-control" placeholder="your@gmail.com" aria-label="searchItem"
+                               v-model="userEmail">
+                    </b-col>
+                </b-row>
+                <b-row no-gutters class="text-center">
+                    <b-col cols="2">
+                        <h6 style="font-weight:bold">Dollar or Percent</h6>
+                    </b-col>
+                    <b-col cols="5">
+                        <b-form-select v-model="pricePointType" :options="pricePointTypes"></b-form-select>
+                    </b-col>
+                    <b-col cols="5">
+                        <input maxlength="2048" type="number" class="form-control" placeholder="100" aria-label="searchItem"
+                               v-model="pricePointValue">
+                    </b-col>
+                </b-row>
+                <b-row no-gutters class="text-center">
+                    <b-col cols="3">
+                        <h6 style="font-weight:bold">Length Of Subscription (Days)</h6>
+                    </b-col>
+                    <b-col cols="3">
+                        <input maxlength="2048" type="number" class="form-control" placeholder="3" aria-label="searchItem"
+                               v-model="subscriptionLength">
+                    </b-col>
+                </b-row>
+            </b-col>
+            <b-col no-gutters cols="2" align-self="stretch">
+                <b-button class="full-width full-height" :disabled="isValidToSend" @click="submitSubscription" type="submit" variant="primary">Submit Subscription</b-button>
+            </b-col>
+        </b-row>
+    </b-container>
 
 </template>
 
@@ -40,7 +54,8 @@
           "Dollar Amount",
           "Percentage Of Market Average"
         ],
-        pricePointValue: ""
+        pricePointValue: "",
+        subscriptionLength: "3"
       }
     },
 
@@ -60,7 +75,7 @@
         "sendSubscription"
       ]),
       submitSubscription(){
-        this.sendSubscription(this.userEmail, this.pricePointType, this.pricePointValue)
+        this.sendSubscription(this.userEmail, this.pricePointType, this.pricePointValue, this.subscriptionLength)
       }
     }
   }
@@ -68,40 +83,19 @@
 
 <style scoped>
 
-    #sub_options{
-        width:80%;
-        display: inline-block;
-    }
-    #submit_subscription_div{
-        display: inline-block;
-    }
-
-    #email_div{
+    .full-width{
         width:100%;
-    }
-    #price_point_div {
-        width: 100%;
-    }
-    #email_label{
-        width: 20%;
-        display: inline-block;
-    }
-    #email_input{
-        width:80%;
-        display: inline-block;
-    }
-    #type_selector{
-        width:50%;
-        display: inline-block;
-    }
-    #price_value_input{
-        width:50%;
-        display: inline-block;
+        padding-left:0px;
+        padding-right:0px;
+        margin-left:0px;
+        margin-right:0px;
     }
 
-    .subscription_settings{
-        width: 50%;
-        padding: 10px 50px 10px;
-        margin: 0 auto;
+    .full-height{
+        height:100%;
+        padding-top:0px;
+        padding-bottom:0px;
+        margin-top:0px;
+        margin-bottom:0px;
     }
 </style>

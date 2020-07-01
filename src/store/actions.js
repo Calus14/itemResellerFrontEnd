@@ -30,9 +30,9 @@ export default{
 
   },
 
-  sendSubscription: (state, emailAddress, pricePointType, priceValue) =>{
+  sendSubscription: (state, emailAddress, pricePointType, priceValue, subscriptionLength) =>{
 
-    var basicSearchUrl = new URL(serverInfo.serverUrl+":"+serverInfo.serverPort+"/"+serverInfo.submitSubscription+"/")
+    var basicSearchUrl = new URL(serverInfo.serverUrl+":"+serverInfo.serverPort+"/"+serverInfo.submitSubscriptionEndpoint+"/")
     var httpBody = {
       method: 'POST',
       headers: new Headers({
@@ -41,7 +41,8 @@ export default{
       body: JSON.stringify({
         'emailAddress': emailAddress,
         'pricePointType': pricePointType,
-        'priceValue': priceValue
+        'priceValue': priceValue,
+        'subscriptionLength': subscriptionLength
       })
     }
 

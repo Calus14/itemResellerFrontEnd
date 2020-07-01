@@ -1,17 +1,19 @@
 <template>
-    <div id="search_box" class="main_search">
-        <div id="div1">
-            <img alt="search_image" src="../assets/search.png">
-        </div>
-        <div id="div2">
-            <input id="searchItemInput" maxlength="2048" type="text" class="form-control" placeholder="" aria-label="searchItem"
-                   v-model="currentSearch"
-                    @keyup="updateCurrentSearch()">
-        </div>
-        <div id="div3">
-            <b-button @click="submitBasicSearch" type="submit" variant="primary">Search</b-button>
-        </div>
-    </div>
+    <b-container class="bv-example-row" >
+        <b-row class="text-center justify-content-center">
+            <b-col cols="1">
+                <img alt="search_image" src="../assets/search.png" style="padding:0px">
+            </b-col>
+            <b-col cols="5">
+                <input id="searchItemInput" maxlength="2048" type="text" class="form-control" placeholder="" aria-label="searchItem"
+                       v-model="currentSearch"
+                        @keyup="updateCurrentSearch()">
+            </b-col>
+            <b-col cols="1">
+                <b-button @click="submitBasicSearch" type="submit" variant="primary">Search</b-button>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
@@ -47,18 +49,10 @@
 
 <style scoped>
 
-    #div2{
-        width: 100%;
-    }
 
     #searchItemInput{
         width: 100%;
     }
 
-    .main_search {
-        width : 50%;
-        padding: 10px 50px 10px;
-        display: flex;
-        margin: 0 auto;
-    }
+
 </style>
