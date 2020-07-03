@@ -1,0 +1,3 @@
+npm run build
+add it
+git push heroku master
