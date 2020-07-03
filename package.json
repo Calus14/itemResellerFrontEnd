@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "serve-static": "^1.14.1",
     "vue": "^2.6.11",
+    "@vue/cli": "^4.4.6",
     "vuejs-dialog": "^1.4.1",
     "vuex": "^3.4.0"
   },
@@ -22,6 +23,7 @@
     "@vue/cli-service": "~4.4.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+    "@vue/cli": "^4.4.6",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
