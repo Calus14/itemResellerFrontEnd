@@ -26,7 +26,7 @@
     mounted(){
       this.$worker.run( () => {
         console.log("Mounted and started");
-        var sendTime = 10
+        var sendTime = 600
         var shouldSend = true;
 
         var sendFunction  = function(){
