@@ -1,11 +1,11 @@
 import serverInfo from "../data/serverInfo"
 import fetchWithTimeout from "../utility/fetchWithTimeout";
 export default{
-
   sendBasicSearch: ({getters, commit}) =>{
     var searchItem = getters.getCurrentSearch
 
     var basicSearchUrl = new URL(serverInfo.serverUrl+"/"+serverInfo.basicSearchEndpoint)
+
     // Wasted too much time trying to get heroku to pass it in as part of process.env
     if(serverInfo.isLocalRun)
       basicSearchUrl = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.basicSearchEndpoint)

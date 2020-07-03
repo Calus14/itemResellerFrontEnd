@@ -5,6 +5,7 @@ export default{
   localPort: 8801,
 
   //ENDPOINTS
+  heartbeatEndpoint: "heartbeat",
   basicSearchEndpoint: "listOfItems",
   submitSubscriptionEndpoint: "submitSubscription"
 }
