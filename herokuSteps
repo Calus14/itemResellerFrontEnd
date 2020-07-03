@@ -5,3 +5,5 @@ git push heroku master
 
 To Clear Builds
 heroku repo:purge_cache -a appname
+
+To set Env Variables?

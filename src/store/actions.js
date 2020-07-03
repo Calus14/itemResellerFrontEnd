@@ -4,7 +4,12 @@ export default{
 
   sendBasicSearch: ({getters, commit}) =>{
     var searchItem = getters.getCurrentSearch
-    var basicSearchUrl = new URL(serverInfo.serverUrl+":"+serverInfo.serverPort+"/"+serverInfo.basicSearchEndpoint+"/")
+
+    var basicSearchUrl = new URL(serverInfo.serverUrl+"/"+serverInfo.basicSearchEndpoint)
+    // Wasted too much time trying to get heroku to pass it in as part of process.env
+    if(serverInfo.isLocalRun)
+      basicSearchUrl = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.basicSearchEndpoint)
+
     var httpBody = {
       method: 'POST',
       headers: new Headers({
@@ -32,7 +37,7 @@ export default{
 
   sendSubscription: (state, emailAddress, pricePointType, priceValue, subscriptionLength) =>{
 
-    var basicSearchUrl = new URL(serverInfo.serverUrl+":"+serverInfo.serverPort+"/"+serverInfo.submitSubscriptionEndpoint+"/")
+    var basicSearchUrl = new URL(serverInfo.serverUrl+":"+serverInfo.serverPort+"/"+serverInfo.submitSubscriptionEndpoint)
     var httpBody = {
       method: 'POST',
       headers: new Headers({

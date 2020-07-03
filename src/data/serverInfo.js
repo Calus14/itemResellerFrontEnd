@@ -1,6 +1,8 @@
 export default{
-  serverUrl: process.env.SERVER_URL ||  "http://localHost",
-  serverPort: process.env.SERVER_PORT || 8801,
+  isLocalRun: false,
+  serverUrl: "https://item-reseller-alpha.herokuapp.com",
+  localUrl: "http://localHost",
+  localPort: 8801,
 
   //ENDPOINTS
   basicSearchEndpoint: "listOfItems",
