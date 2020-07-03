@@ -10,6 +10,8 @@ Vue.use(BootstrapVue)
 Vue.use(VuejsDialog);
 
 Vue.config.productionTip = false
+console.log("The value of our env is ")
+console.log(process.env)
 
 new Vue({
   store,
