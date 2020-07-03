@@ -1,30 +1,31 @@
 <template>
-  <div id="app">
+    <div id="app">
 
-    <img alt="scrapper_pic" src="./assets/funnyIcon.jpg">
-    <MainPage/>
+      <img alt="scrapper_pic" src="./assets/funnyIcon.jpg">
+      <MainPage/>
 
-  </div>
+    </div>
 </template>
 
 <script>
-import MainPage from './components/MainPage.vue'
+  import MainPage from './components/MainPage.vue'
 
-export default {
-  name: 'App',
-  components: {
-    MainPage
+  export default {
+    name: 'App',
+    components: {
+      MainPage
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
