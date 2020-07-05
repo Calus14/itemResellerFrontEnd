@@ -1,7 +1,7 @@
 <template>
     <div id="app">
 
-      <img alt="scrapper_pic" src="./assets/funnyIcon.jpg">
+      <img alt="scrapper_pic" src="/assets/funnyIcon.jpg">
       <MainPage/>
 
     </div>
@@ -61,6 +61,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    #background-color: #5487fe;
+    heigh: 100vh;
   }
 </style>

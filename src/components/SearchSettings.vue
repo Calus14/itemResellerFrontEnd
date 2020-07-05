@@ -2,7 +2,7 @@
     <b-container class="bv-example-row" >
         <b-row class="text-center justify-content-center">
             <b-col cols="1">
-                <img alt="search_image" src="../assets/search.png" style="padding:0px">
+                <img alt="search_image" src="/assets/search.png" style="padding:0px">
             </b-col>
             <b-col cols="5">
                 <input id="searchItemInput" maxlength="2048" type="text" class="form-control" placeholder="" aria-label="searchItem"
@@ -19,7 +19,7 @@
 <script>
   import {mapActions, mapMutations} from "vuex";
   export default {
-    name: "SearchSettings.vue",
+    name: "SearchSettings",
 
     data() {
       return {

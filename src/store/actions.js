@@ -1,7 +1,7 @@
 import serverInfo from "../data/serverInfo"
 import fetchWithTimeout from "../utility/fetchWithTimeout";
 export default{
-  sendBasicSearch: ({getters, commit}) =>{
+  sendBasicSearch: ({state, getters, commit}) =>{
     var searchItem = getters.getCurrentSearch
 
     var basicSearchUrl = new URL(serverInfo.serverUrl+"/"+serverInfo.basicSearchEndpoint)
@@ -17,7 +17,7 @@ export default{
       }),
       body: JSON.stringify({
         'searchItem': searchItem,
-        'websitesToSearch': ['Ebay', 'Amazon']
+        'websitesToSearch': state.selectedSites
       })
     }
 

@@ -1,5 +1,7 @@
 <template>
   <div class="mainPage">
+    <h3>Sties You Don't Hate (These will be searched)</h3>
+    <SitePicker/>
     <h3>Enter Search </h3>
     <SearchSettings/>
     <h3>Subscribe For Updates</h3>
@@ -12,7 +14,7 @@
 import ItemList from './ItemList.vue'
 import SearchSettings from './SearchSettings.vue'
 import SubscriptionSettings from './SubscriptionSettings.vue'
-
+import SitePicker from './SitePicker.vue'
 
 export default {
   name: 'MainPage',
@@ -21,6 +23,7 @@ export default {
     ItemList,
     SearchSettings,
     SubscriptionSettings,
+    SitePicker,
   },
 
   props: {

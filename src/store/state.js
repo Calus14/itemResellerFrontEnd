@@ -3,7 +3,7 @@ export default {
 
     currentSearch: "",
 
-    possibleSites: [],
+    possibleSites: ["amazon", "ebay"],
     selectedSites: [],
 
     searchResults: []
