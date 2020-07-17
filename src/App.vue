@@ -1,20 +1,18 @@
 <template>
     <div id="app">
-
-      <img alt="scrapper_pic" src="/assets/funnyIcon.jpg">
-      <MainPage/>
-
+      <NavigationBar/>
+        <router-view/>
     </div>
 </template>
 
 <script>
-  import MainPage from './components/MainPage.vue'
+  import NavigationBar from "./components/NavigationBar";
   import {mapActions} from "vuex";
 
   export default {
     name: 'App',
     components: {
-      MainPage
+      NavigationBar
     },
 
     methods: {
@@ -37,7 +35,6 @@
             { mode: 'no-cors',
               method:'GET'
             })
-          console.log("Point 1")
         }
 
         while(shouldSend) {

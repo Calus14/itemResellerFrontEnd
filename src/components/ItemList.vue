@@ -1,7 +1,6 @@
 <template>
     <div id="search_table"
          v-if="this.getSearchResults.length != 0" >
-
         <div>
             <b-table striped hover :fields="this.fields" :items="this.searchResultItems">
                 <template v-slot:cell(Item)="item">

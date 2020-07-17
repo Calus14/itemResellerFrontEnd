@@ -1,6 +1,7 @@
 <template>
-  <div class="mainPage">
-    <h3>Sties You Don't Hate (These will be searched)</h3>
+  <div class="searchPage">
+    <img alt="scrapper_pic" src="/assets/funnyIcon.jpg">
+    <h3>Sites You Don't Hate (These will be searched)</h3>
     <SitePicker/>
     <h3>Enter Search </h3>
     <SearchSettings/>
@@ -17,7 +18,7 @@ import SubscriptionSettings from './SubscriptionSettings.vue'
 import SitePicker from './SitePicker.vue'
 
 export default {
-  name: 'MainPage',
+  name: 'SearchPage',
 
   components: {
     ItemList,
