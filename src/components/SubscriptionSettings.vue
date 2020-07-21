@@ -2,15 +2,6 @@
     <b-container class="bv-example-row" >
         <b-row class="text-center">
             <b-col cols="10">
-                <b-row class="text-center">
-                    <b-col cols="3">
-                        <h6 style="font-weight:bold">Email Address</h6>
-                    </b-col>
-                    <b-col cols="9">
-                        <input maxlength="2048" type="text" class="form-control" placeholder="your@gmail.com" aria-label="searchItem"
-                               v-model="userEmail">
-                    </b-col>
-                </b-row>
                 <b-row no-gutters class="text-center">
                     <b-col cols="2">
                         <h6 style="font-weight:bold">Dollar or Percent</h6>
@@ -19,7 +10,7 @@
                         <b-form-select v-model="pricePointType" :options="pricePointTypes"></b-form-select>
                     </b-col>
                     <b-col cols="5">
-                        <input maxlength="2048" type="number" class="form-control" placeholder="100" aria-label="searchItem"
+                        <input maxlength="2048" type="number" min="1" class="form-control" placeholder="100" aria-label="searchItem"
                                v-model="pricePointValue">
                     </b-col>
                 </b-row>
@@ -28,7 +19,7 @@
                         <h6 style="font-weight:bold">Length Of Subscription (Days)</h6>
                     </b-col>
                     <b-col cols="3">
-                        <input maxlength="2048" type="number" class="form-control" placeholder="3" aria-label="searchItem"
+                        <input maxlength="2048" type="number" class="form-control" placeholder="3" min="1" aria-label="searchItem"
                                v-model="subscriptionLength">
                     </b-col>
                 </b-row>
@@ -48,7 +39,6 @@
 
     data(){
       return{
-        userEmail: "",
         pricePointType: "",
         pricePointTypes: [
           "Dollar Amount",
@@ -64,7 +54,7 @@
         "getCurrentSearch"
       ]),
       isValidToSend(){
-        if(this.getCurrentSearch.length > 0)
+        if(this.getCurrentSearch.length > 0 && this.pricePointType != "" && this.pricePointValue != "")
           return false
         return true
       }
@@ -75,7 +65,13 @@
         "sendSubscription"
       ]),
       submitSubscription(){
-        this.sendSubscription(this.userEmail, this.pricePointType, this.pricePointValue, this.subscriptionLength)
+        let subscriptionObject = {
+          type: this.pricePointType,
+          value: this.pricePointValue,
+          subDays: this.subscriptionLength
+        }
+
+        this.sendSubscription(subscriptionObject )
       }
     }
   }

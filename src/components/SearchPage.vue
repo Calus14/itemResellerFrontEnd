@@ -5,8 +5,10 @@
     <SitePicker/>
     <h3>Enter Search </h3>
     <SearchSettings/>
-    <h3>Subscribe For Updates</h3>
-    <SubscriptionSettings/>
+    <div v-if="($store.state.currentUserUUID.length != 0 && $store.state.searchResults.length != 0)">
+      <h3>Subscribe</h3>
+      <SubscriptionSettings/>
+    </div>
     <ItemList id="search_results_table"/>
   </div>
 </template>

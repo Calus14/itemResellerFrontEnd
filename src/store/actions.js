@@ -1,5 +1,6 @@
 import serverInfo from "../data/serverInfo"
 import fetchWithTimeout from "../utility/fetchWithTimeout";
+
 /* eslint-disable no-empty-pattern, no-console */
 export default{
   sendBasicSearch: ({state, getters, commit}) =>{
@@ -131,11 +132,15 @@ export default{
     })
   },
 
-  sendSubscription: ({state}, pricePointType, priceValue, subscriptionLength) =>{
+
+  sendSubscription: ({state}, subscriptionObject) =>{
     var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.submitSubscriptionEndpoint)
     // Wasted too much time trying to get heroku to pass it in as part of process.env
     if(serverInfo.isLocalRun)
       urlAsString = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.submitSubscriptionEndpoint)
+
+    console.log(subscriptionObject)
+    console.log( parseInt(subscriptionObject.subDays))
 
     var httpBody = {
       method: 'POST',
@@ -143,10 +148,11 @@ export default{
         'content-type': 'application/json'
       }),
       body: JSON.stringify({
-        'emailAddress': state.currentUserEmailAddress,
-        'pricePointType': pricePointType,
-        'priceValue': priceValue,
-        'subscriptionLength': subscriptionLength
+        'userId': state.currentUserUUID,
+        'itemName': state.currentSearch,
+        'pricePoint' : subscriptionObject.value,
+        'priceType': subscriptionObject.type,
+        'hoursToLive': parseInt(subscriptionObject.subDays)*24
       })
     }
 
@@ -158,7 +164,7 @@ export default{
       }
 
       response.json().then( (data) => {
-        print(data)
+        console.log(data)
         //TODO
       })
     })
