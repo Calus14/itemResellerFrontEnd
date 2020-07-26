@@ -1,5 +1,5 @@
 export default{
-  isLocalRun: false,
+  isLocalRun: true,
   serverUrl: "https://item-reseller-alpha.herokuapp.com",
   localUrl: "http://localHost",
   localPort: 8801,

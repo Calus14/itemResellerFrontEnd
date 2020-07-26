@@ -149,11 +149,11 @@
           alertMessage = "Invalid email address "
         if( !this.validNewUserPassword )
           alertMessage = alertMessage + "\n Invalid password: 7 to 16 characters contain only characters, numeric digits, underscore and first character must be a letter"
-
         if(!this.validNewEmailAddress || !this.validNewUserPassword){
           alert(alertMessage)
           return false
         }
+        return true
       },
 
       handleNewUserSubmit(){

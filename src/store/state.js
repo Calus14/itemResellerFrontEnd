@@ -9,6 +9,7 @@ export default {
     possibleSites: ["amazon", "ebay"],
     selectedSites: [],
 
-    searchResults: []
-,
+    searchResults: [],
+
+    userSubscriptions: [],
 }
