@@ -8,6 +8,7 @@ export default{
   heartbeatEndpoint: "heartbeat",
   basicSearchEndpoint: "listOfItems",
   submitSubscriptionEndpoint: "submitSubscription",
+  userSubscriptionsEndpoint: "userSubscription",
   userExistsEndpoint: "userExists",
   createUserEndpoint: "addUser",
   loginUserEndpoint: "loginUser"

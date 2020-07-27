@@ -132,15 +132,42 @@ export default{
     })
   },
 
+  getUsersActiveSubscriptions({state}){
+    var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.userSubscriptionsEndpoint)
+    // Wasted too much time trying to get heroku to pass it in as part of process.env
+    if(serverInfo.isLocalRun)
+      urlAsString = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.userSubscriptionsEndpoint)
+
+    var httpBody = {
+      method: 'GET',
+      headers: new Headers({
+        'content-type': 'application/json'
+      }),
+      body: JSON.stringify({
+        'userId': state.currentUserUUID
+      })
+    }
+
+    // Now send down the request with fetch, take the future and set the possible states when it is done
+    fetchWithTimeout( urlAsString, httpBody, 10000 ).then( (response) => {
+      if( response.status !== 200) {
+        console.log("Error while running the subscription get for users: "+response.status)
+        return;
+      }
+
+      response.json().then( (data) => {
+        console.log(data)
+        state.userSubscriptions = data;
+      })
+    })
+
+  },
 
   sendSubscription: ({state}, subscriptionObject) =>{
     var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.submitSubscriptionEndpoint)
     // Wasted too much time trying to get heroku to pass it in as part of process.env
     if(serverInfo.isLocalRun)
       urlAsString = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.submitSubscriptionEndpoint)
-
-    console.log(subscriptionObject)
-    console.log( parseInt(subscriptionObject.subDays))
 
     var httpBody = {
       method: 'POST',
