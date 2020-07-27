@@ -2,14 +2,13 @@
 export default {
 
     currentSearch: "",
-    attemptedUserEmailAddress: "",
+
     currentUserEmailAddress: "",
     currentUserUUID: "",
+    userSubscriptions: [],
 
     possibleSites: ["amazon", "ebay"],
     selectedSites: [],
 
     searchResults: [],
-
-    userSubscriptions: [],
 }

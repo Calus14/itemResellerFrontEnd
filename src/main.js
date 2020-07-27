@@ -6,16 +6,19 @@ import BootstrapVue from 'bootstrap-vue'
 import VuejsDialog from 'vuejs-dialog';
 import router from './router';
 import store from './store'
+import vuetify from './plugins/vuetify';
 import VueWorker from 'vue-worker';
 
 Vue.use(BootstrapVue)
 Vue.use(VuejsDialog);
-Vue.use(VueWorker)
+Vue.use(VueWorker);
+
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  render: h => h(App),
+  vuetify,
+  render: h => h(App)
 }).$mount('#app')

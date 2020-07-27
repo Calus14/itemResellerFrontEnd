@@ -37,7 +37,7 @@ export default{
 
   },
 
-  loginUser: ({state}, password) =>{
+  loginUser: ({state}, loginObject) =>{
     var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.loginUserEndpoint)
 
     // Wasted too much time trying to get heroku to pass it in as part of process.env
@@ -50,8 +50,8 @@ export default{
         'content-type': 'application/json'
       }),
       body: JSON.stringify({
-        'email': state.attemptedUserEmailAddress,
-        "password" : password
+        'email': loginObject.email,
+        "password" : loginObject.password
       })
     }
 
@@ -61,7 +61,7 @@ export default{
         console.log("Error while running the userLogin: "+response.status)
       }
       response.json().then( (data) => {
-        state.currentUserEmailAddress = state.attemptedUserEmailAddress
+        state.currentUserEmailAddress = loginObject.email
         state.currentUserUUID = data['userUniqueId']
       })
     })
