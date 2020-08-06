@@ -107,6 +107,7 @@
             login(){
               this.loginUser({'email': this.userEmail, 'password': this.userPassword});
               this.isOpen = false
+
             },
 
             logout(){

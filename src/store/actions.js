@@ -37,7 +37,7 @@ export default{
 
   },
 
-  loginUser: ({state}, loginObject) =>{
+  loginUser: ({commit}, loginObject) =>{
     var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.loginUserEndpoint)
 
     // Wasted too much time trying to get heroku to pass it in as part of process.env
@@ -61,13 +61,18 @@ export default{
         console.log("Error while running the userLogin: "+response.status)
       }
       response.json().then( (data) => {
-        state.currentUserEmailAddress = loginObject.email
-        state.currentUserUUID = data['userUniqueId']
+
+        let userCreds = {
+          'email' : loginObject.email,
+          'uuid' : data['userUniqueId'],
+        }
+
+        commit('setCurrentUser', userCreds)
       })
     })
   },
 
-  createNewUser: ({state}, newUserObject) =>{
+  createNewUser: ({commit}, newUserObject) =>{
     var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.createUserEndpoint)
 
     // Wasted too much time trying to get heroku to pass it in as part of process.env
@@ -90,8 +95,13 @@ export default{
         console.log("Error while running the add new user command : "+response.status)
       }
       response.json().then( (data) => {
-        state.currentUserEmailAddress = newUserObject.emailAddress;
-        state.currentUserUUID = data['userUniqueId']
+
+        let userCreds = {
+          'email' : newUserObject.emailAddress,
+          'uuid' : data['userUniqueId'],
+        }
+
+        commit('setCurrentUser', userCreds)
       })
     })
   },

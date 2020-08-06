@@ -5,6 +5,7 @@ export default {
 
     currentUserEmailAddress: "",
     currentUserUUID: "",
+    currentUserWebsocket: null,
     userSubscriptions: [],
 
     possibleSites: ["amazon", "ebay"],
