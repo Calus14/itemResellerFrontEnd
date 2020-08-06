@@ -7,10 +7,10 @@
             <b-col cols="5">
                 <input id="searchItemInput" maxlength="2048" type="text" class="form-control" placeholder="" aria-label="searchItem"
                        v-model="currentSearch"
-                        @keyup="updateCurrentSearch()">
+                >
             </b-col>
             <b-col cols="1">
-                <b-button @click="submitBasicSearch" type="submit" variant="primary">Search</b-button>
+                <b-button @click="submitBasicSearch()" type="submit" variant="primary">Search</b-button>
             </b-col>
         </b-row>
     </b-container>
@@ -41,6 +41,7 @@
       },
 
       submitBasicSearch(){
+        this.updateCurrentSearch();
         this.sendBasicSearch()
       }
     },

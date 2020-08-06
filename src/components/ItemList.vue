@@ -57,7 +57,7 @@ export default{
         items.push({
           "Website": item["Website"],
           "Image": item["Image"],
-          "Item": "<a href=\"" + item["Link"] + "\">" + item["Name"] + "</a>",
+          "Item": "<a target=\"_blank\" href=\"" + item["Link"] + "\">" + item["Name"] + " </a>",
           "Price": item["Price"],
         })
       })
