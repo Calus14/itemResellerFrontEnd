@@ -5,7 +5,7 @@ export default{
   getCurrentSearch: (state) => {
     return state.currentSearch
   },
-
+  
 
   getPossibleSites: (state) => {
     return state.possibleSites

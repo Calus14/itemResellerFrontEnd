@@ -1,5 +1,5 @@
 export default{
-  isLocalRun: true,
+  isLocalRun: false,
   serverUrl: "https://item-reseller-alpha.herokuapp.com",
   localUrl: "http://localHost",
   localPort: 8801,
@@ -8,7 +8,8 @@ export default{
   heartbeatEndpoint: "heartbeat",
   basicSearchEndpoint: "listOfItems",
   submitSubscriptionEndpoint: "submitSubscription",
-  userSubscriptionsEndpoint: "userSubscription",
+  userSubscriptionsEndpoint: "userSubscriptions",
+  subscriptionFoundItemsEndpoint: "subscriptionItems",
   userExistsEndpoint: "userExists",
   createUserEndpoint: "addUser",
   loginUserEndpoint: "loginUser"

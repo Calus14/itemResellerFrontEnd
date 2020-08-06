@@ -70,8 +70,6 @@ export default{
   createNewUser: ({state}, newUserObject) =>{
     var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.createUserEndpoint)
 
-    console.log(newUserObject.emailAddress)
-    console.log(newUserObject.password)
     // Wasted too much time trying to get heroku to pass it in as part of process.env
     if(serverInfo.isLocalRun)
       urlAsString = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.createUserEndpoint)
@@ -139,7 +137,7 @@ export default{
       urlAsString = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.userSubscriptionsEndpoint)
 
     var httpBody = {
-      method: 'GET',
+      method: 'POST',
       headers: new Headers({
         'content-type': 'application/json'
       }),
@@ -156,11 +154,70 @@ export default{
       }
 
       response.json().then( (data) => {
-        console.log(data)
         state.userSubscriptions = data;
       })
     })
 
+  },
+
+  deleteUserSubscription({commit}, subscriptionId){
+    var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.userSubscriptionsEndpoint)
+    // Wasted too much time trying to get heroku to pass it in as part of process.env
+    if(serverInfo.isLocalRun)
+      urlAsString = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.userSubscriptionsEndpoint)
+
+    var httpBody = {
+      method: 'DELETE',
+      headers: new Headers({
+        'content-type': 'application/json'
+      }),
+      body: JSON.stringify({
+        'subscriptionId': subscriptionId
+      })
+    }
+
+    // Now send down the request with fetch, take the future and set the possible states when it is done
+    fetchWithTimeout( urlAsString, httpBody, 10000 ).then( (response) => {
+      if( response.status !== 200) {
+        console.log("Error while running the subscription get for users: "+response.status)
+        return;
+      }
+
+      response.json().then( () => {
+        commit('deleteSubscription', subscriptionId)
+      })
+    })
+  },
+
+  async getFoundSubscriptionItemsAsync({}, subscriptionId){
+    var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.subscriptionFoundItemsEndpoint)
+    // Wasted too much time trying to get heroku to pass it in as part of process.env
+    if(serverInfo.isLocalRun)
+      urlAsString = new URL(serverInfo.localUrl+":"+serverInfo.localPort+"/"+serverInfo.subscriptionFoundItemsEndpoint)
+
+    var httpBody = {
+      method: 'POST',
+      headers: new Headers({
+        'content-type': 'application/json'
+      }),
+      body: JSON.stringify({
+        'subscriptionId': subscriptionId
+      })
+    }
+
+    // Now send down the request with fetch, take the future and set the possible states when it is done
+    let response = await fetchWithTimeout( urlAsString, httpBody, 10000 ).then( (response) => {
+      if( response.status !== 200) {
+        console.log("Error while running the getFoundSubscriptionItemsAsync "+response.status)
+        return;
+      }
+      else {
+        return response;
+      }
+    })
+
+    let data = response.json()
+    return data
   },
 
   sendSubscription: ({state}, subscriptionObject) =>{

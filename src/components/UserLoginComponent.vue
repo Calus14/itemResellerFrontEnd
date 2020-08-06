@@ -29,6 +29,7 @@
                                     v-model="userEmail"
                                     @keypress="validateEmailAddress"
                                     @click="validateEmailAddress"
+                                    @change="validateEmailAddress"
                                     :error="validEmailAddress == false"></v-text-field>
                         </v-col>
                         <v-col cols="12">
