@@ -170,7 +170,7 @@ export default{
 
   },
 
-  deleteUserSubscription({commit}, subscriptionId){
+  deleteUserSubscription({commit}, subscriptionInfo){
     var urlAsString = new URL(serverInfo.serverUrl+"/"+serverInfo.userSubscriptionsEndpoint)
     // Wasted too much time trying to get heroku to pass it in as part of process.env
     if(serverInfo.isLocalRun)
@@ -182,7 +182,8 @@ export default{
         'content-type': 'application/json'
       }),
       body: JSON.stringify({
-        'subscriptionId': subscriptionId
+        'subscriptionId': subscriptionInfo.subscriptionId,
+        'itemName':  subscriptionInfo.itemName
       })
     }
 
@@ -194,7 +195,7 @@ export default{
       }
 
       response.json().then( () => {
-        commit('deleteSubscription', subscriptionId)
+        commit('deleteSubscription', subscriptionInfo.subscriptionId)
       })
     })
   },
@@ -211,7 +212,7 @@ export default{
         'content-type': 'application/json'
       }),
       body: JSON.stringify({
-        'subscriptionId': subscriptionId
+        'subscriptionId': subscriptionId,
       })
     }
 

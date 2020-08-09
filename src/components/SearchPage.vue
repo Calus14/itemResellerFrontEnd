@@ -1,12 +1,11 @@
 <template>
-  <div class="searchPage">
+  <div class="text-sm-center" >
     <img alt="scrapper_pic" src="/assets/funnyIcon.jpg">
     <h3>Sites You Don't Hate (These will be searched)</h3>
     <SitePicker/>
     <h3>Enter Search </h3>
     <SearchSettings/>
     <div v-if="($store.state.currentUserUUID.length != 0 && $store.state.searchResults.length != 0)">
-      <h3>Subscribe</h3>
       <SubscriptionSettings/>
     </div>
     <ItemList id="search_results_table"/>
@@ -57,11 +56,12 @@ h3 {
   margin: 40px 0 0;
 }
 
-
 #search_results_table{
   width: 70%;
   padding: 50px;
   margin: 0 auto;
 }
+
+
 
 </style>

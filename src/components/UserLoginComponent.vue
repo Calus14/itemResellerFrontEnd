@@ -67,11 +67,17 @@
                 <span class="headline">User Logout</span>
             </v-card-title>
             <v-card-text>
-                <p class="text-center text--darken-1"> Confirm Logout?</p>
+                <h4 class="text-center text--darken-1 display-1"> Confirm Logout?</h4>
             </v-card-text>
             <v-card-actions>
-                <v-btn color="blue darken-4"
-                       text
+                <v-btn color="caution darken-1"
+                       outlined
+                       @click="isOpen = false">
+                    Cancle
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn color="success darken-1"
+                       outlined
                        @click="logout">Log out
                 </v-btn>
             </v-card-actions>

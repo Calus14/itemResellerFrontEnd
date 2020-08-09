@@ -15,7 +15,7 @@
                             align="right"
                             color="red"
                             depressed
-                            @click="deleteUserSubscription(subscriptionId)"
+                            @click="deleteUserSubscription({subscriptionId: subscriptionId, itemName:subscriptionItemName})"
                     >
                     <v-icon left>mdi-delete</v-icon>
                     Delete
