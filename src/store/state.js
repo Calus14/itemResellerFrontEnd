@@ -7,7 +7,7 @@ export default {
     currentUserUUID: "",
     userSubscriptions: [],
 
-    possibleSites: ["amazon", "ebay"],
+    possibleSites: ["amazon", "ebay", "walmart", "bestbuy", "target", "newegg"],
     selectedSites: [],
 
     searchResults: [],

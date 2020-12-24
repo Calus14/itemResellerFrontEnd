@@ -1,5 +1,9 @@
 npm run build
 add it
+heroku login (in cmd usually)
+
+#Follow https://dashboard.heroku.com/apps/item-reseller-frontend-alpha/deploy/heroku-git for examples
+#To see that you actuallyhave the right ref your pointing too use git branch -a
 git push heroku master
 
 
